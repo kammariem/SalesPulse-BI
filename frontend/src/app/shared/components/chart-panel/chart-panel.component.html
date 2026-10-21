@@ -1,0 +1,27 @@
+<div class="chart-card card">
+  <div class="section-title">
+    <div>
+      <h2>{{ title }}</h2>
+      <small>{{ subtitle }}</small>
+    </div>
+    <span class="pill blue">{{ badgeLabel }}</span>
+  </div>
+
+  <div class="chart-reference" *ngIf="resolvedReference || resolvedAnnotation">
+    <span *ngIf="resolvedReference"><strong>Graph</strong> {{ resolvedReference }}</span>
+    <span *ngIf="resolvedAnnotation"><strong>Note</strong> {{ resolvedAnnotation }}</span>
+  </div>
+
+  <div class="chart-body" [style.height.px]="chartHeightPx">
+    <ng-container *ngIf="!loading; else chartLoading">
+      <canvas #canvas *ngIf="hasRenderableData()"></canvas>
+      <div *ngIf="!hasRenderableData()" class="empty-state overlay-empty">
+        {{ emptyMessage }}
+      </div>
+    </ng-container>
+  </div>
+
+  <ng-template #chartLoading>
+    <div class="skeleton chart-skeleton"></div>
+  </ng-template>
+</div>

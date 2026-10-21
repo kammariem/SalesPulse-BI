@@ -1,0 +1,37 @@
+<aside class="sidebar" [class.collapsed]="collapsed">
+  <div class="brand">
+    <div class="brand-mark">SP</div>
+    <div class="brand-text">
+      <strong>SalesPulse</strong>
+      <span>SSAS Analytics</span>
+    </div>
+  </div>
+
+  <div class="workspace">
+    <div class="workspace-icon">▥</div>
+    <div class="workspace-text">
+      <span>Sales Operations</span>
+      <strong>CUBE_EDB</strong>
+    </div>
+  </div>
+
+  <nav class="nav-list">
+    <a *ngFor="let item of mainItems"
+       [routerLink]="item.route"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: item.route === '/dashboard' }"
+       class="nav-item">
+      <span class="nav-icon">{{ item.icon }}</span>
+      <span class="nav-label">{{ item.label }}</span>
+      <span *ngIf="item.badge" class="nav-badge">{{ item.badge }}</span>
+    </a>
+  </nav>
+
+  <div class="side-footer">
+    <div class="yellow-dot"></div>
+    <div>
+      <strong>BI Mode</strong>
+      <span>Live OLAP cube</span>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,29 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  background:
+    radial-gradient(circle at top right, rgba(247, 201, 72, 0.18), transparent 36%),
+    radial-gradient(circle at top left, rgba(31, 122, 244, 0.16), transparent 33%),
+    var(--background);
+}
+
+.app-main {
+  min-width: 0;
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  transition: margin-left .25s ease;
+}
+
+.sidebar-collapsed .app-main { margin-left: 92px; }
+
+.content-wrap {
+  padding: 28px;
+  max-width: 1660px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .app-main { margin-left: 0; }
+  .sidebar-collapsed .app-main { margin-left: 0; }
+  .content-wrap { padding: 18px; }
+}

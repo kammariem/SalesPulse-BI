@@ -1,0 +1,27 @@
+# Dependencies and generated artifacts
+**/node_modules/
+**/bin/
+**/obj/
+**/dist/
+**/.angular/
+**/coverage/
+**/TestResults/
+*.log
+*.tmp
+
+# Local user and SSAS configuration (must never be committed)
+**/appsettings.Local.json
+**/appsettings.*.local.json
+.env
+.env.*
+!.env.example
+*.user
+*.suo
+.vs/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak

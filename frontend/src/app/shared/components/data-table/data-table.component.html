@@ -1,0 +1,37 @@
+<div class="table-card card">
+  <div class="section-title">
+    <div>
+      <h2>{{ title }}</h2>
+      <small>{{ subtitle }}</small>
+    </div>
+    <span class="pill yellow">Details</span>
+  </div>
+
+  <ng-container *ngIf="!loading; else tableLoading">
+    <div class="table-wrap" *ngIf="rows.length; else empty">
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let col of columns">{{ col.label }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of rows; let i = index">
+            <td *ngFor="let col of columns" [class.numeric]="col.type && col.type !== 'text'">
+              <span *ngIf="col.key === 'rank'" class="rank">#{{ i + 1 }}</span>
+              <span *ngIf="col.key !== 'rank'">{{ display(row[col.key], col.type) }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+  <ng-template #empty>
+    <div class="empty-state">No rows to display.</div>
+  </ng-template>
+
+  <ng-template #tableLoading>
+    <div class="skeleton row-skeleton" *ngFor="let item of [1,2,3,4,5]"></div>
+  </ng-template>
+</div>

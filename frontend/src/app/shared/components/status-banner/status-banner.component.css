@@ -1,0 +1,14 @@
+.status-banner {
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 18px;
+  border: 1px solid transparent;
+}
+.status-banner strong { font-weight: 900; }
+.status-banner.info { background: var(--blue-100); color: var(--blue-800); border-color: rgba(17,85,204,.14); }
+.status-banner.success { background: #dcfce7; color: #166534; border-color: rgba(22,101,52,.14); }
+.status-banner.error { background: #fee2e2; color: #991b1b; border-color: rgba(153,27,27,.14); }
+@media (max-width: 700px) { .status-banner { align-items: flex-start; flex-direction: column; } }

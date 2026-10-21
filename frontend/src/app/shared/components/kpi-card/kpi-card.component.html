@@ -1,0 +1,19 @@
+<div class="kpi-card" [class.loading]="loading" [ngClass]="tone">
+  <ng-container *ngIf="!loading; else skeleton">
+    <div class="kpi-icon">{{ icon }}</div>
+    <div class="kpi-body">
+      <span>{{ title }}</span>
+      <strong>{{ value }}</strong>
+      <small>{{ subtitle }}</small>
+    </div>
+  </ng-container>
+
+  <ng-template #skeleton>
+    <div class="skeleton sk-icon"></div>
+    <div class="kpi-body">
+      <div class="skeleton sk-line short"></div>
+      <div class="skeleton sk-line"></div>
+      <div class="skeleton sk-line tiny"></div>
+    </div>
+  </ng-template>
+</div>

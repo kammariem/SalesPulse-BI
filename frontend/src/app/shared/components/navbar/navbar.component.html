@@ -1,0 +1,40 @@
+<header class="topbar">
+  <button class="menu-btn" type="button" (click)="toggleSidebar.emit()" aria-label="Toggle sidebar">☰</button>
+
+  <div class="search-box" [class.open]="showSuggestions">
+    <span>⌕</span>
+    <input
+      [(ngModel)]="search"
+      (focus)="showSuggestions = true"
+      (keyup.enter)="runSearch()"
+      (keyup.escape)="showSuggestions = false"
+      placeholder="Search: customers, products, sales, city..." />
+
+    <div class="search-panel" *ngIf="showSuggestions">
+      <button
+        type="button"
+        class="search-item"
+        *ngFor="let item of filteredShortcuts"
+        (mousedown)="goTo(item)">
+        <strong>{{ item.label }}</strong>
+        <small>{{ item.description }}</small>
+      </button>
+      <div class="search-empty" *ngIf="filteredShortcuts.length === 0">
+        No page found. Try: products, customers, sales, country, employee.
+      </div>
+    </div>
+  </div>
+
+  <div class="status-group">
+    <button class="status-chip" type="button" (click)="refreshStatus()" [class.ok]="backendOnline" [class.ko]="backendOnline === false">
+      <span class="dot"></span>
+      API
+    </button>
+    <button class="status-chip" type="button" (click)="refreshStatus()" [class.ok]="ssasOnline" [class.ko]="ssasOnline === false">
+      <span class="dot"></span>
+      SSAS
+    </button>
+  </div>
+
+
+</header>

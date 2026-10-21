@@ -1,0 +1,2 @@
+.controls { padding:18px; display:grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap:14px; align-items:end; margin-bottom:22px; }
+label { display:flex; flex-direction:column; gap:8px; } label span{color:var(--ink-500);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;} select,input{min-height:46px;border:1px solid rgba(17,85,204,.14);border-radius:14px;padding:0 12px;background:var(--blue-050);outline:none;font-weight:700;} app-data-table{display:block;margin-top:20px;} @media(max-width:900px){.controls{grid-template-columns:1fr;}}

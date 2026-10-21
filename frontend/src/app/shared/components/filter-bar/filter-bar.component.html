@@ -1,0 +1,35 @@
+<div class="filter-bar card">
+  <div class="filter-head">
+    <strong>Cube filters</strong>
+    <span>Use MEMBER_UNIQUE_NAME values from SSAS dimensions</span>
+  </div>
+
+  <label>
+    <span>Year</span>
+    <select [(ngModel)]="selectedYear" [disabled]="loading">
+      <option value="">All years</option>
+      <option *ngFor="let year of years" [value]="year.uniqueName || ''">{{ year.label }}</option>
+    </select>
+  </label>
+
+  <label>
+    <span>Country</span>
+    <select [(ngModel)]="selectedCountry" [disabled]="loading">
+      <option value="">All countries</option>
+      <option *ngFor="let country of countries" [value]="country.uniqueName || ''">{{ country.label }}</option>
+    </select>
+  </label>
+
+  <label>
+    <span>Product category</span>
+    <select [(ngModel)]="selectedCategory" [disabled]="loading">
+      <option value="">All categories</option>
+      <option *ngFor="let category of categories" [value]="category.uniqueName || ''">{{ category.label }}</option>
+    </select>
+  </label>
+
+  <div class="actions">
+    <button class="btn secondary" type="button" (click)="clear()">Clear</button>
+    <button class="btn primary" type="button" (click)="apply()">Apply</button>
+  </div>
+</div>

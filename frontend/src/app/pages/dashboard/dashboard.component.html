@@ -1,0 +1,80 @@
+<div class="dashboard-hero">
+  <div>
+    <span class="pill yellow">Executive overview</span>
+    <h1>Performance & Trends</h1>
+    <p>Dashboard connecté au backend ASP.NET Core et au cube SSAS CUBE_EDB.</p>
+  </div>
+  <button class="btn primary" type="button" (click)="loadDashboard()">↻ Refresh</button>
+</div>
+
+<app-status-banner *ngIf="errorMessage" type="error" title="API Error" [message]="errorMessage"></app-status-banner>
+
+<div class="kpi-row">
+  <app-kpi-card *ngFor="let kpi of kpiCards"
+                [title]="kpi.title"
+                [value]="kpi.value"
+                [subtitle]="kpi.subtitle"
+                [icon]="kpi.icon"
+                [tone]="kpi.tone"
+                [loading]="loading">
+  </app-kpi-card>
+</div>
+
+<div class="dashboard-grid">
+  <app-chart-panel class="chart-wide"
+                   title="Revenue trends"
+                   subtitle="Monthly revenue trend with quantity on a secondary axis"
+                   type="line"
+                   [height]="390"
+                   [labels]="trendLabels"
+                   [datasets]="trendDatasets"
+                   [loading]="loading"
+                   reference="Line chart · Dim Date / HiérarchieDate / Month"
+                   annotation="Left axis = Total Amount, right axis = Order Quantity.">
+  </app-chart-panel>
+
+  <app-chart-panel class="chart-side"
+                   title="Product performance"
+                   subtitle="Top products by revenue and sold quantity"
+                   type="bar"
+                   [horizontal]="true"
+                   [height]="430"
+                   [labels]="productLabels"
+                   [datasets]="productDatasets"
+                   [loading]="loading"
+                   reference="Horizontal bar · Dim Product / Product Hierarchy / Product"
+                   annotation="Revenue and quantity are displayed on separate axes.">
+  </app-chart-panel>
+
+  <app-chart-panel class="chart-side"
+                   title="Geographic segmentation"
+                   subtitle="Revenue contribution by city"
+                   type="doughnut"
+                   [height]="430"
+                   [labels]="cityLabels"
+                   [datasets]="cityDatasets"
+                   [loading]="loading"
+                   reference="Doughnut chart · Dim Geography / Geography Hierarchy / City"
+                   annotation="Geographic analysis uses City, not Country.">
+  </app-chart-panel>
+
+  <app-chart-panel class="chart-wide"
+                   title="Employee performance"
+                   subtitle="Top employees by generated amount"
+                   type="bar"
+                   [horizontal]="true"
+                   [height]="390"
+                   [labels]="employeeLabels"
+                   [datasets]="employeeDatasets"
+                   [loading]="loading"
+                   reference="Horizontal bar · Dim Employee / Employee Hierarchy / Employee"
+                   annotation="Employee ranking by generated revenue.">
+  </app-chart-panel>
+</div>
+
+<app-data-table title="Top customers"
+                subtitle="Customer ranking using cube aggregations"
+                [columns]="tableColumns"
+                [rows]="customerRows"
+                [loading]="loading">
+</app-data-table>
